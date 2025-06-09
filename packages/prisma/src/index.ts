@@ -1,4 +1,5 @@
-import { PrismaClient } from '../generated/prisma'
-export const client = new PrismaClient();
+import { PrismaClient } from '../generated/prisma';
 
-export const NAME = "harkirat";
+const client = new PrismaClient();
+
+export { client };

@@ -10,7 +10,9 @@ datasource db {
 
 model User {
   id        String   @id @default(uuid())
-  email     String   @unique
+  username  String   @unique
+  password  String
+  // email     String   @unique
   name      String?
   posts     Post[]
   createdAt DateTime @default(now())
