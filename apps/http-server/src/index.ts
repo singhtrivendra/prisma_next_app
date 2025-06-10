@@ -1,18 +1,18 @@
-import express from "express";
-import { client } from '@repo/db/client';
+import express, { Request, Response } from "express";
+const { prismaClient } = require('@repo/db/client');
 
 const app = express();
 
 app.use(express.json());
 
-app.get("/", (req, res) =>{
+app.get("/", (req: Request, res: Response) =>{
     res.send("Hi there");
 })
 
-app.get("/Signup", async (req, res) =>{
+app.get("/Signup", async (req: Request, res: Response) =>{
     const username = req.body.username;
     const password = req.body.password;
-    const user = await  client.user.create({
+    const user = await  prismaClient .user.create({
         data: {
             username: username,
             password: password,
@@ -28,5 +28,7 @@ app.get("/Signup", async (req, res) =>{
 
 
 
-app.listen(3000);
+app.listen(3000, () => {
+    console.log("Server is running on port 3000");
+});
 

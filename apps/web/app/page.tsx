@@ -1,7 +1,8 @@
-import { client } from '@repo/db/client';
+const { prismaClient } = require('@repo/db/client');
 
-export default async function Home() {
-  const user = await client.user.findFirst();
+// Use module.exports instead of export default
+module.exports = async function Home() {
+  const user = await prismaClient.user.findFirst();
   return (
     <div>
       {user?.username}
